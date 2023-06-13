@@ -27,7 +27,7 @@ def connection():
 
 def send_messages():
     while True:
-        message = input('--')
+        message = input('')
         if message != '':
             cliente.send(message.encode())
 
@@ -48,7 +48,7 @@ def recv_messages(cliente):
             break
 
         if datos:
-            print(datos.decode())
+            print('->',datos.decode())
         else:
             cliente.close()
             break
