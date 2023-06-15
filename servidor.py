@@ -50,7 +50,7 @@ def recv_messages(cliente):
             break
 
         if datos:
-            print('->',datos.decode())
+            print(Fore.MAGENTA + '->' + Style.RESET_ALL,datos.decode())
         else:
             cliente.close()
             break

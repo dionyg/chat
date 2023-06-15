@@ -1,5 +1,6 @@
 import socket
 import threading
+from colorama import Fore, Back, Style
 
 direccion_servidor = ('192.168.0.106', 55555)
 
@@ -7,7 +8,7 @@ def receive_messages(cliente):
     while True:
         datos = cliente.recv(1024)
         if datos:
-            print('->',datos.decode())
+            print(Fore.MAGENTA + '->' + Style.RESET_ALL,datos.decode())
         else:
             cliente.close()
             break
