@@ -4,11 +4,11 @@ from colorama import Fore, Back, Style
 
 servidor = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-direccion_servidor = ('localhost', 55555)
+direccion_servidor = ('192.168.0.106', 55555)
 servidor.bind(direccion_servidor)
 
-servidor.listen(2)
-print(f'Server running on {direccion_servidor[0]}:{direccion_servidor[1]}')
+servidor.listen(1)
+print(Back.GREEN + Fore.BLACK + f'\nServer running on {direccion_servidor[0]} : {direccion_servidor[1]}' + Style.RESET_ALL)
 print('Waiting for connection...\n')
 
 
@@ -19,7 +19,7 @@ def connection():
         cliente, direccion_cliente = servidor.accept()
         print(Back.LIGHTBLUE_EX + Fore.BLACK +'connection stablished from:', direccion_cliente, '\n' + Style.RESET_ALL)
 
-        respuesta = 'Connected to server.'
+        respuesta = Back.LIGHTBLUE_EX + Fore.BLACK + 'Connected to server.' + Style.RESET_ALL+  '\n'
         cliente.send(respuesta.encode())
         return cliente
 
@@ -45,7 +45,7 @@ def recv_messages(cliente):
             datos = cliente.recv(1024)
         
         except ConnectionResetError:
-            print('\n-Client disconnected.')
+            print(Back.RED + Fore.WHITE + '\n-Client disconnected.')
             cliente.close()
             break
 

@@ -1,7 +1,7 @@
 import socket
 import threading
 
-direccion_servidor = ('localhost', 55555)
+direccion_servidor = ('192.168.0.106', 55555)
 
 def receive_messages(cliente):
     while True:
